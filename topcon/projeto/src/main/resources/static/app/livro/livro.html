@@ -1,0 +1,31 @@
+<div >
+Livro
+
+<div class="row">
+<table class="table table-hover table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Título</th>
+          <th>Gênero</th>
+          <th>Autor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="l in livros">
+          <th scope="row">{{l.id}}</th>
+          <td>{{l.titulo}}</td>
+          <td>{{l.genero}}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-default"
+              ng-click="open('',l.id)"> Autor
+            </button>
+          </td>
+        </tr>
+      </tbody>
+</table>
+</div>
+
+</div>

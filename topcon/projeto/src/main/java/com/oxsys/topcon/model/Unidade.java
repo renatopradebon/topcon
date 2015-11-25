@@ -1,15 +1,18 @@
 package com.oxsys.topcon.model;
 
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.oxsys.topcon.model.enums.TipoUnidade;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.oxsys.topcon.model.enums.UnidadeTipo;
 
 @Entity
 @Table(name="tab_unidade")
@@ -19,10 +22,11 @@ public class Unidade {
 	@GeneratedValue
 	private long id;
 	
-	private TipoUnidade tipounidade;
+	@Enumerated(EnumType.STRING)
+	private UnidadeTipo tipo;
 	
 	private String quadra;
-	
+
 	private String bloco;
 	
 	private String rua;
@@ -31,11 +35,11 @@ public class Unidade {
 	
 	private String andar;
 	
-	private long numeroQuartos;
+	private long quarto;
 	
-	@ElementCollection
-	@CollectionTable(name = "tab_unidade_garagem")
-	private Set<String> vagaGaragem;
+	@ JsonIgnore 
+	@OneToMany(mappedBy = "unidade", fetch = FetchType.LAZY)
+	private List<Vaga> vagas;
 
 	public long getId() {
 		return id;
@@ -45,12 +49,12 @@ public class Unidade {
 		this.id = id;
 	}
 
-	public TipoUnidade getTipounidade() {
-		return tipounidade;
+	public UnidadeTipo getTipo() {
+		return tipo;
 	}
 
-	public void setTipounidade(TipoUnidade tipounidade) {
-		this.tipounidade = tipounidade;
+	public void setTipo(UnidadeTipo tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getQuadra() {
@@ -93,29 +97,45 @@ public class Unidade {
 		this.andar = andar;
 	}
 
-	public long getNumeroQuartos() {
-		return numeroQuartos;
+	public long getQuarto() {
+		return quarto;
 	}
 
-	public void setNumeroQuartos(long numeroQuartos) {
-		this.numeroQuartos = numeroQuartos;
+	public void setQuarto(long quarto) {
+		this.quarto = quarto;
 	}
 
-	public Set<String> getVagaGaragem() {
-		return vagaGaragem;
+	public List<Vaga> getVagas() {
+		return vagas;
 	}
 
-	public void setVagaGaragem(Set<String> vagaGaragem) {
-		this.vagaGaragem = vagaGaragem;
+	public void setVagas(List<Vaga> vagas) {
+		this.vagas = vagas;
+	}
+
+	public Unidade(long id, UnidadeTipo tipo, String quadra, String bloco, String rua, String numero, String andar,
+			long quarto, List<Vaga> vagas) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.quadra = quadra;
+		this.bloco = bloco;
+		this.rua = rua;
+		this.numero = numero;
+		this.andar = andar;
+		this.quarto = quarto;
+		this.vagas = vagas;
 	}
 
 	@Override
 	public String toString() {
-		return "Unidade [id=" + id + ", tipounidade=" + tipounidade + ", quadra=" + quadra + ", bloco=" + bloco
-				+ ", rua=" + rua + ", numero=" + numero + ", andar=" + andar + ", numeroQuartos=" + numeroQuartos
-				+ ", vagaGaragem=" + vagaGaragem + "]";
+		return "Unidade [id=" + id + ", tipo=" + tipo + ", quadra=" + quadra + ", bloco=" + bloco + ", rua=" + rua
+				+ ", numero=" + numero + ", andar=" + andar + ", quarto=" + quarto + ", vagas=" + vagas + "]";
 	}
-	
-	
+
+
+	public Unidade(){
+		
+	}
 	
 }

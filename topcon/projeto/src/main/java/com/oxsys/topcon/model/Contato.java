@@ -1,6 +1,8 @@
 package com.oxsys.topcon.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,29 +10,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.oxsys.topcon.model.enums.ContatoTipo;
 
-
 @Entity
-@Table(name="tab_contato")
+@Table(name = "tab_contato")
+
 public class Contato {
 
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	private String nome;
-	
+
+	@Enumerated(EnumType.STRING)
 	private ContatoTipo tipo;
-	
+
 	private String telefone;
-	
+
 	private String email;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="pessoa_id")
-	private Pessoa pessoa; 
-	
+
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "pessoa_id")
+	private Pessoa pessoa;
+
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -85,7 +90,18 @@ public class Contato {
 				+ ", pessoa=" + pessoa + "]";
 	}
 
-	
-	
-	
+	public Contato(long id, String nome, ContatoTipo tipo, String telefone, String email, Pessoa pessoa) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.tipo = tipo;
+		this.telefone = telefone;
+		this.email = email;
+		this.pessoa = pessoa;
+	}
+
+	public Contato() {
+
+	}
+
 }

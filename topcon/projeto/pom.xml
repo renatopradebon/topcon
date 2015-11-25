@@ -66,12 +66,34 @@
 		<dependency> 
 			 <groupId>org.springframework.data</groupId> 
 			 <artifactId>spring-data-rest-hal-browser</artifactId> 
-    	</dependency>
+    	</dependency> 
+    	
+    			 <dependency>
+		    <groupId>net.objecthunter</groupId>
+		    <artifactId>exp4j</artifactId>
+		    <version>0.4.5</version>
+		</dependency>
 
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.5.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.10</version>
+		</dependency>
+
+    	
+		
 	</dependencies>
 	
 	<build>

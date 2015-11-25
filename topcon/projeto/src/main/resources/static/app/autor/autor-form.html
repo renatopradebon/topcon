@@ -1,0 +1,25 @@
+<form name="mainForm" ng-submit="send()">
+	<div>
+		<label>Nome</label> <input type="text" ng-model="autor.name"
+			name="username" required /> <span ng-class="error"
+			ng-show="mainForm.username.$error.required">Nome � obrigat�rio</span>
+	</div>
+	<div>
+		<label>email</label> <input type="email" ng-model="autor.email"
+			name="useremail" required /> <span ng-class="error"
+			ng-show="mainForm.useremail.$error.required">Email �
+			obrigat�rio</span> <span ng-class="error"
+			ng-show="mainForm.useremail.$error.email"> Formato do e-mail �
+			inv�lido</span>
+	</div>
+	<div>
+		<label>Idade</label> <input type="number" ng-model="user.age"
+			name="userage" required ng-maxlength=2 ng-minlength=1> <span
+			ng-class="error" ng-show="mainForm.userage.$error.maxlength">N�o
+			� permitido mais que 2 digitos</span>
+	</div>
+
+	<div>
+		<input type="submit" ng-disabled="mainForm.$invalid">
+	</div>
+</form>

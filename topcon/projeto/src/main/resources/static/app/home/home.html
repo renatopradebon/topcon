@@ -1,0 +1,41 @@
+<div>
+<div class="row">
+<div class="col-lg-12 col-sm-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">{{nome}}</div>
+		<div class="panel-body">
+			<pre>
+
+	Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
+	Why?: An IIFE removes variables from the global scope. This helps prevent 
+	variables and function declarations from living longer than expected in the
+	global scope, which also helps avoid variable collisions.
+
+	(function() {
+
+		'use strict';
+
+		angular.module('app').controller('HomeController', ['$scope', HomeController]);
+
+		function HomeController($scope) {
+
+			//debugger;
+
+			$scope.title = 'Biblioteca';
+
+			$scope.versao = '1.0';
+
+			$scope.nome = $scope.title + $scope.versao;
+
+		}
+
+	})();
+			</pre>
+
+<blockquote>
+  <p></p>
+  <footer>É simples, porém complexo. <cite title="Source Title">L.T.</cite></footer>
+</blockquote>
+
+
+</div>
