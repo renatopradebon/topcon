@@ -37,7 +37,7 @@ public class Unidade {
 	
 	private long quarto;
 	
-	@ JsonIgnore 
+	@JsonIgnore 
 	@OneToMany(mappedBy = "unidade", fetch = FetchType.LAZY)
 	private List<Vaga> vagas;
 

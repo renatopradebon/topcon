@@ -8,18 +8,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tab_veiculo")
 public class Veiculo {
-	
-
-	@Override
-	public String toString() {
-		return "Veiculo [id=" + id + ", placa=" + placa + "]";
-	}
 
 	@Id
 	@GeneratedValue
 	private long id;
 	
 	private String placa;
+	
+	private String modelo;
+	
+	private String cor;
 
 	public long getId() {
 		return id;
@@ -36,7 +34,25 @@ public class Veiculo {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
-	
-	
-	
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	@Override
+	public String toString() {
+		return "Veiculo [id=" + id + ", placa=" + placa + ", modelo=" + modelo + ", cor=" + cor + "]";
+	}
 }

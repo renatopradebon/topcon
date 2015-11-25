@@ -1,7 +1,6 @@
 package com.oxsys.topcon.weather.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 
 public class City {
   
