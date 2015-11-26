@@ -2,11 +2,15 @@ package com.oxsys.topcon.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,10 +26,13 @@ public class Contrato {
 	@GeneratedValue
 	private long id;
 	
-	private String numeroContrato;
+	@Column(length=20, nullable=false)
+	private String numeroControle;
 	
+	@Temporal(TemporalType.DATE)
 	private Date dataContrato;
 	
+	@Enumerated(EnumType.STRING)
 	private ContratoTipo tipo;
 	
 	@Temporal(TemporalType.DATE)
@@ -41,21 +48,31 @@ public class Contrato {
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="unidade_id")
 	private Unidade unidade;
+	
+	@ManyToOne
+	@JoinColumn(name = "proprietario_id")
+	private Pessoa proprietario;
 
 	public long getId() {
 		return id;
 	}
+	
+	public Contrato(long id, String numeroControle, Date dataContrato, ContratoTipo tipo, Date dataInicioVigencia,
+			Date dataFinalVigencia, Pessoa pessoa, Unidade unidade, Pessoa proprietario) {
+		super();
+		this.id = id;
+		this.numeroControle = numeroControle;
+		this.dataContrato = dataContrato;
+		this.tipo = tipo;
+		this.dataInicioVigencia = dataInicioVigencia;
+		this.dataFinalVigencia = dataFinalVigencia;
+		this.pessoa = pessoa;
+		this.unidade = unidade;
+		this.proprietario = proprietario;
+	}
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getNumeroContrato() {
-		return numeroContrato;
-	}
-
-	public void setNumeroContrato(String numeroContrato) {
-		this.numeroContrato = numeroContrato;
 	}
 
 	public Date getDataContrato() {
@@ -104,6 +121,30 @@ public class Contrato {
 
 	public void setUnidade(Unidade unidade) {
 		this.unidade = unidade;
+	}
+
+	public String getNumeroControle() {
+		return numeroControle;
+	}
+
+	public void setNumeroControle(String numeroControle) {
+		this.numeroControle = numeroControle;
+	}
+
+	public Pessoa getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Pessoa proprietario) {
+		this.proprietario = proprietario;
+	}
+
+	@Override
+	public String toString() {
+		return "Contrato [id=" + id + ", numeroControle=" + numeroControle + ", dataContrato=" + dataContrato
+				+ ", tipo=" + tipo + ", dataInicioVigencia=" + dataInicioVigencia + ", dataFinalVigencia="
+				+ dataFinalVigencia + ", pessoa=" + pessoa + ", unidade=" + unidade + ", proprietario=" + proprietario
+				+ "]";
 	}
 	
 

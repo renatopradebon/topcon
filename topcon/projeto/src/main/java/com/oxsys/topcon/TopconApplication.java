@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.oxsys.topcon.model.Contato;
-import com.oxsys.topcon.model.Contrado;
+import com.oxsys.topcon.model.Contrato;
 import com.oxsys.topcon.model.Pessoa;
 import com.oxsys.topcon.model.Unidade;
 import com.oxsys.topcon.model.Usuario;
@@ -70,10 +70,10 @@ public class TopconApplication {
 			repoUnidade.save(u);
 			
 			Vaga v = new Vaga(i,u,Long.toString(i));
-			repoVaga.save(v);
+			repoVaga.save(v);		
 			
-			
-			Contrado ctr = new Contrado(i,"201-11-01-"+i, ContratoTipo.ALUGUEL , new Date(), new Date(), p, p, u);
+			Contrato ctr = new Contrato(i,"201-11-01-"+i, new Date(), ContratoTipo.ALUGUEL, new Date(), new Date(), 
+					p, u, p);
 			repoContrato.save(ctr);
 			
 			Usuario usu = new Usuario("usuario-"+i,"usuario-"+i,"123",UsuarioSituacao.ATIVO,UsuarioTipo.USER);

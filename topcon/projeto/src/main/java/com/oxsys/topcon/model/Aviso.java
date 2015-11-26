@@ -81,4 +81,13 @@ public class Aviso {
 		return "Aviso [id=" + id + ", descricao=" + descricao + ", dataHoraExpiracao=" + dataHoraExpiracao + ", pessoa="
 				+ pessoa + ", situacao=" + situacao + "]";
 	}
+
+	public Aviso(long id, String descricao, Date dataHoraExpiracao, Pessoa pessoa, Situacao situacao) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.dataHoraExpiracao = dataHoraExpiracao;
+		this.pessoa = pessoa;
+		this.situacao = situacao;
+	}
 }

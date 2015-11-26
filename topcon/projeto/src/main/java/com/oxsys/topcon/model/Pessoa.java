@@ -42,8 +42,6 @@ public class Pessoa {
 	@OneToMany(mappedBy="pessoa",fetch=FetchType.LAZY)
 	private List<Contato> contatos;
 	
-	
-	
 	public List<Contato> getContatos() {
 		return contatos;
 	}
