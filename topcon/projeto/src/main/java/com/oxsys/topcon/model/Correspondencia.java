@@ -2,6 +2,7 @@ package com.oxsys.topcon.model;
 
 import java.util.Date;
 
+import javax.annotation.Nullable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -40,15 +41,18 @@ public class Correspondencia {
 	@ManyToOne
 	@JoinColumn(name = "usuarioRecebimento_id")
 	private Usuario usuarioRecebimento;
-	
+		
 	@Temporal(TemporalType.DATE)
+	@Nullable
 	private Date dataRetirada;
 	
+	@Nullable
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "usuarioRetirada_id")
 	private Usuario usuarioRetirada;
 	
+	@Nullable
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "pessoaRetirada_id")
@@ -136,7 +140,24 @@ public class Correspondencia {
 				+ ", usuarioRetirada=" + usuarioRetirada + ", pessoaRetirada=" + pessoaRetirada + ", situacao="
 				+ situacao + "]";
 	}
+
+	public Correspondencia(long id, Pessoa pessoa, TipoCorrespondencia tipo, Date dataRecebimento,
+			Usuario usuarioRecebimento, Date dataRetirada, Usuario usuarioRetirada, Pessoa pessoaRetirada,
+			SituacaoCorrespondencia situacao) {
+		super();
+		this.id = id;
+		this.pessoa = pessoa;
+		this.tipo = tipo;
+		this.dataRecebimento = dataRecebimento;
+		this.usuarioRecebimento = usuarioRecebimento;
+		this.dataRetirada = dataRetirada;
+		this.usuarioRetirada = usuarioRetirada;
+		this.pessoaRetirada = pessoaRetirada;
+		this.situacao = situacao;
+	}
 	
-	
+	public Correspondencia() {
+		// to do
+	}
 
 }

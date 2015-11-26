@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.oxsys.topcon.model.enums.ReservaPeriodo;
 import com.oxsys.topcon.model.enums.ReservaSituacao;
 
 @Entity
@@ -35,6 +36,17 @@ public class Reserva {
 	@ManyToOne
 	@JoinColumn(name = "unidade_id")
 	private Unidade unidade;
+	
+	public ReservaPeriodo getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(ReservaPeriodo periodo) {
+		this.periodo = periodo;
+	}
+
+	@Enumerated(EnumType.STRING)
+	private ReservaPeriodo periodo;
 	
 	@Enumerated(EnumType.STRING)
 	private ReservaSituacao situacao;
@@ -78,19 +90,25 @@ public class Reserva {
 	public void setSituacao(ReservaSituacao situacao) {
 		this.situacao = situacao;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", dataReserva=" + dataReserva + ", pessoa=" + pessoa + ", unidade=" + unidade
-				+ ", situacao=" + situacao + "]";
+				+ ", periodo=" + periodo + ", situacao=" + situacao + "]";
 	}
 
-	public Reserva(long id, Date dataReserva, Pessoa pessoa, Unidade unidade, ReservaSituacao situacao) {
+	public Reserva() {
+		// to do
+	}
+	
+	public Reserva(long id, Date dataReserva, Pessoa pessoa, Unidade unidade, ReservaPeriodo periodo,
+			ReservaSituacao situacao) {
 		super();
 		this.id = id;
 		this.dataReserva = dataReserva;
 		this.pessoa = pessoa;
 		this.unidade = unidade;
+		this.periodo = periodo;
 		this.situacao = situacao;
 	}
 

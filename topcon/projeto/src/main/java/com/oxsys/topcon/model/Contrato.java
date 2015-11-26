@@ -54,25 +54,7 @@ public class Contrato {
 
 	public long getId() {
 		return id;
-	}
-	
-	public Contrato(){
-		// to do
-	}
-	
-	public Contrato(long id, String numeroControle, Date dataContrato, ContratoTipo tipo, Date dataInicioVigencia,
-			Date dataFinalVigencia, Pessoa pessoa, Unidade unidade, Pessoa proprietario) {
-		super();
-		this.id = id;
-		this.numeroControle = numeroControle;
-		this.dataContrato = dataContrato;
-		this.tipo = tipo;
-		this.dataInicioVigencia = dataInicioVigencia;
-		this.dataFinalVigencia = dataFinalVigencia;
-		this.pessoa = pessoa;
-		this.unidade = unidade;
-		this.proprietario = proprietario;
-	}
+	}	
 
 	public void setId(long id) {
 		this.id = id;
@@ -150,5 +132,22 @@ public class Contrato {
 				+ "]";
 	}
 	
+	public Contrato(){
+		// to do
+	}
+	
+	public Contrato(long id, String numeroControle, Date dataContrato, ContratoTipo tipo, Date dataInicioVigencia,
+			Date dataFinalVigencia, Pessoa pessoa, Unidade unidade, Pessoa proprietario) {
+		super();
+		this.id = id;
+		this.numeroControle = numeroControle;
+		this.dataContrato = dataContrato;
+		this.tipo = tipo;
+		this.dataInicioVigencia = dataInicioVigencia;
+		this.dataFinalVigencia = dataFinalVigencia;
+		this.pessoa = pessoa;
+		this.unidade = unidade;
+		this.proprietario = proprietario;
+	}
 
 }

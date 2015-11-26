@@ -91,4 +91,8 @@ public class Aviso {
 		this.pessoa = pessoa;
 		this.situacao = situacao;
 	}
+	
+	public Aviso() {
+		// to do
+	}
 }
