@@ -16,12 +16,12 @@ public class VeiculoResource {
 	private VeiculoRepository repo;
 	
 	@RequestMapping("/api/veiculo")
-	public Iterable<Veiculo> listaPessoas(){
+	public Iterable<Veiculo> listaVeiculos(){
 		return repo.findAll();
 	}
 	
  	@RequestMapping( value="/api/veiculo", method = RequestMethod.POST)
-	public Veiculo addPessoa(@RequestBody final  Veiculo veiculo ){
+	public Veiculo addVeiculo(@RequestBody final  Veiculo veiculo ){
 		Veiculo v = repo.save(veiculo);	
 		return v;
 	}

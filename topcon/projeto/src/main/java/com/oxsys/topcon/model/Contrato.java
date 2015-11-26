@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,20 +40,24 @@ public class Contrato {
 	@Temporal(TemporalType.DATE)
 	private Date dataFinalVigencia;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="pessoa_id")
 	private Pessoa pessoa;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="unidade_id")
 	private Unidade unidade;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "proprietario_id")
 	private Pessoa proprietario;
 
 	public long getId() {
 		return id;
+	}
+	
+	public Contrato(){
+		// to do
 	}
 	
 	public Contrato(long id, String numeroControle, Date dataContrato, ContratoTipo tipo, Date dataInicioVigencia,
